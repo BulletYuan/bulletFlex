@@ -141,10 +141,12 @@
 .flex-nowrap {flex-wrap: nowrap}
 .flex-wrap {flex-wrap: wrap}
 
-.flex-(9);
-.flex-(@n,@i:1) when (@i<=@n){
-    -webkit-box-flex: @i;-webkit-flex: @i;flex: @i;
-    .flex-(@n,(@i+1))
+@for $i from 1 through 9 {
+  .flex-#{$i} {
+    -webkit-box-flex: $i;
+    -webkit-flex: $i;
+    flex: $i;
+  }
 }
 
 /* 基础弹性容器内容水平排列样式 */
@@ -187,9 +189,8 @@
 }
 
 .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
-.gen-ellipsis(3);
-.gen-ellipsis(@n,@i:1) when (@i<=@n){
-    .ellipsis-@{i}row{display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: @i;overflow: hidden;
-    }
-    .gen-ellipsis(@n,(@i+1))
+
+@for $i from 1 through 3{
+  .ellipsis-#{$i}row{display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: $i;overflow: hidden;
+  }
 }
